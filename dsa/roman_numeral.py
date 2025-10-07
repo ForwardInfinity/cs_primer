@@ -21,16 +21,6 @@ def to_roman(number):
 
 
 
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     test_cases = {
         39: "XXXIX",
@@ -40,6 +30,6 @@ if __name__ == "__main__":
     }
 
     for num, expected in test_cases.items():
-        assert(num) == expected, f"Wrong at {num}"
+        assert to_roman(num) == expected, f"Wrong at {num}"
 
     print("All tests passed!")
