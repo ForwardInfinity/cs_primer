@@ -1,34 +1,27 @@
-"""
-Problem: Convert interger to roman numerals
+roman_numerals = {
+    1000: "M",
+    900: "CM",
+    500: "D",
+    400: "CD",
+    100: "C",
+    90: "XC",
+    50: "L",
+    40: "XL",
+    10: "X",
+    9: "IX",
+    5: "V",
+    4: "IV",
+    1: "I"
+}
 
-
-Planning:
-
-
-Candidate Solution:
-- Use dict because roman numerals are deterministic.
-- 
-
-Criticism:
-- General refactoring
-
-"""
 
 def to_roman(number):
-    # TO DO
-
-    pass
-
-
-
-
-
-
-
-
-
-
-
+    result = ""
+    for key in roman_numerals:
+        if number >= key:
+            result += (number // key) * roman_numerals[key]
+            number %= key
+    return result
 
 
 if __name__ == "__main__":
@@ -36,10 +29,10 @@ if __name__ == "__main__":
         39: "XXXIX",
         246: "CCXLVI",
         789: "DCCLXXXIX",
-        2421: "MMCDXXI"
+        2421: "MMCDXXI",
+        3999: "MMMCMXCIX"
     }
 
     for num, expected in test_cases.items():
-        assert(num) == expected, f"Wrong at {num}"
-
+        assert to_roman(num) == expected, f"Wrong at {num}"
     print("All tests passed!")
