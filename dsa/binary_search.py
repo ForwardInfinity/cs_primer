@@ -1,13 +1,15 @@
-def binary_search(arr, target, left, right):
-    if left > right:
-        return None
-    mid = (left + right) // 2
-    if target == arr[mid]:
-        return mid
-    elif target < arr[mid]:
-        return binary_search(arr, target, left, mid - 1)
-    else:
-        return binary_search(arr, target, mid + 1, right)
+def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if target == arr[mid]:
+            return mid
+        elif target < arr[mid]:
+            right = mid - 1
+        else:
+            left = mid + 1    
+    return None
 
 
 if __name__ == "__main__":
@@ -23,5 +25,5 @@ if __name__ == "__main__":
     }
 
     for num, expected in test_cases.items():
-        assert binary_search(arr, num, 0, len(arr) - 1) == expected, f"Wrong at {num}"
+        assert binary_search(arr, num) == expected, f"Wrong at {num}"
     print("All tests passed!")
